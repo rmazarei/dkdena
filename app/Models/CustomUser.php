@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomUser extends User
 {
-    use HasFactory;
+    protected $connection = 'dkdena_comment';
+    protected $table = 'users';
 }

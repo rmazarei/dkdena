@@ -19,10 +19,12 @@ class UserSeeder extends Seeder
             'email' => 'rouhollah@gmail.com',
             'password'  => bcrypt('1qaz@WSX'),
         ]);
-        DB::table('users')->connection('dkdena_comment')->insert([
+
+        DB::connection('dkdena_comment')->table('users')->insert([
             'name'  => 'Rouhollah Mazarei',
             'email' => 'rouhollah@gmail.com',
             'password'  => bcrypt('1qaz@WSX'),
         ]);
+
     }
 }

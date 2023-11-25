@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('test', function(){
+    $user1 = \App\Models\User::find(1);
+    $user2 = \App\Models\CustomUser::find(1);
+
+    dd($user1, $user2);
+});
