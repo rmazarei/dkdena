@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Traits\CustomResponseTrait;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    use CustomResponseTrait;
     public function login(LoginRequest $request): JsonResponse
     {
         $message = '';
@@ -26,24 +28,18 @@ class UserController extends Controller
             $responseCode = 401;
         }
 
-        return response()->json([
-            'data'  => [
+        return $this->customResponse([
                 'message'    => $message,
                 'token'    => $token,
-            ],
-            'server_time'   => Carbon::now(),
-        ], $responseCode);
+            ], $responseCode);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): JsonResponse
     {
         $request->user()->tokens()->delete();
 
-        return response()->json([
-            'data'  => [
+        return $this->customResponse([
                 'message'    => 'Goodbye blue sky',
-            ],
-            'server_time'   => Carbon::now(),
-        ]);
+            ]);
     }
 }

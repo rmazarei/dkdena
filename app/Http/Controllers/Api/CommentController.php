@@ -8,13 +8,17 @@ use App\Http\Requests\CommentRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\Comment;
 use App\Models\CustomUser;
+use App\Traits\CustomResponseTrait;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class CommentController extends Controller
 {
+    use CustomResponseTrait;
+
     public function auth(LoginRequest $request)
     {
         $user = null;
@@ -37,17 +41,14 @@ class CommentController extends Controller
                 $responseCode = 401;
             }
         }
-        return response()->json([
-            'data' => [
+        return $this->customResponse([
                 'message'    => $message,
                 'token'    => $token,
-            ],
-            'server_time'   => Carbon::now(),
         ], $responseCode);
 
     }
 
-    public function store(CommentRequest $request)
+    public function store(CommentRequest $request): JsonResponse
     {
         $user = $request->user();
         $comment = new Comment();
@@ -56,11 +57,8 @@ class CommentController extends Controller
         $comment->body     = $request->body;
         $comment->save();
 
-        return response()->json([
-            'data' => [
+        return $this->customResponse([
                 'message'    => 'نظر شما با موفقیت ذخیره شد',
-            ],
-            'server_time'   => Carbon::now(),
-        ]);
+            ]);
     }
 }
