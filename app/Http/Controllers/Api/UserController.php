@@ -33,4 +33,16 @@ class UserController extends Controller
             'server_time'   => date(now()),
         ], $responseCode);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'data'  => [
+                'message'    => 'Goodbye blue sky',
+            ],
+            'server_time'   => date(now()),
+        ]);
+    }
 }
