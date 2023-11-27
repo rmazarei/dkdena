@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomUser extends User
+class Comment extends Model
 {
+    use HasFactory;
     protected $connection = 'dkdena_comment';
-    protected $table = 'users';
-    protected string $guard = 'comment';
 }

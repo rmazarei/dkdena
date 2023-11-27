@@ -150,6 +150,8 @@ return [
     'attributes' => [
         'password' => ' کلمه عبور',
         'mobile' => 'موبایل',
+        'title' => 'عنوان',
+        'body' => 'متن',
     ],
 
 ];

@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'comment' => [
+            'driver' => 'token',
+            'provider' => 'comments',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'comments' => [
+             'driver' => 'eloquent',
+             'model' => \App\Models\CustomUser::class,
+         ],
     ],
 
     /*
