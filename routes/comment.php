@@ -16,9 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('auth',[CommentController::class, 'auth'])->name('auth');
 Route::middleware('auth:comment')->post('storeComment',[CommentController::class, 'store'])->name('comments.store');

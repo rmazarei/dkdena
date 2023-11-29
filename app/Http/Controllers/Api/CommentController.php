@@ -21,7 +21,6 @@ class CommentController extends Controller
 
     public function auth(LoginRequest $request)
     {
-        $user = null;
         $message = '';
         $token = null;
         $responseCode = 200;
@@ -41,6 +40,7 @@ class CommentController extends Controller
                 $responseCode = 401;
             }
         }
+
         return $this->customResponse([
                 'message'    => $message,
                 'token'    => $token,
@@ -50,12 +50,8 @@ class CommentController extends Controller
 
     public function store(CommentRequest $request): JsonResponse
     {
-        $user = $request->user();
-        $comment = new Comment();
-        $comment->user_id     = $user->id;
-        $comment->title     = $request->title;
-        $comment->body     = $request->body;
-        $comment->save();
+        // create new comment for current user
+        $request->user()->comments()->create($request->all());
 
         return $this->customResponse([
                 'message'    => 'نظر شما با موفقیت ذخیره شد',
