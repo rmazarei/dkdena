@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "2bf53622-6815-4966-a01e-0cc31813c818",
+		"name": "dkdena",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6620899"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dkdena.local/api/login?mobile=09306685385&password=1qaz@WSX",
+					"protocol": "http",
+					"host": [
+						"dkdena",
+						"local"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "mobile",
+							"value": "09306685385"
+						},
+						{
+							"key": "password",
+							"value": "1qaz@WSX"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|4tYg7mSkmwIKn1iKzO9wavft1B5vEkxmI46iIpQk2a081f7e",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "bearer",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dkdena.local/api/user",
+					"protocol": "http",
+					"host": [
+						"dkdena",
+						"local"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "RdoECzdRt4bldFhWFngaa25heI33KeviKCZER3t10a754256",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dkdena.local/api/logout",
+					"protocol": "http",
+					"host": [
+						"dkdena",
+						"local"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dkdena.local/comments/auth?mobile=09306685385&password=1qaz@WSX",
+					"protocol": "http",
+					"host": [
+						"dkdena",
+						"local"
+					],
+					"path": [
+						"comments",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "mobile",
+							"value": "09306685385"
+						},
+						{
+							"key": "password",
+							"value": "1qaz@WSX"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Store",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|ExZpxe3o72j1VnHSPqm3TR0OysWnetHOf6GzEI2I8e7f097f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dkdena.local/comments/storeComment?title=comment 2 title&body=comment 2 body",
+					"protocol": "http",
+					"host": [
+						"dkdena",
+						"local"
+					],
+					"path": [
+						"comments",
+						"storeComment"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "comment 2 title"
+						},
+						{
+							"key": "body",
+							"value": "comment 2 body"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
